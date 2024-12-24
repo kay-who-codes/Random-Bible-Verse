@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    text-align: center;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.65);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Allows the container to adjust on smaller screens */
+    max-width: 600px; /* Maximum width for larger screens */
+    min-width: 300px; /* Ensures a reasonable minimum size */
+    box-sizing: border-box; /* Ensures padding is included in width calculations */
+}
+
+.version-abbr {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffea00;
+}
+
+.version-name {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #ffe5e5;
+}
+
+.location {
+    font-size: 1.5em;
+    margin: 20px;
+    color: #caffbf;
+}
+
+.verse {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.button {
+    background: #ff5733;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #c70039;
+}
