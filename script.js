@@ -11,13 +11,15 @@ fetch('bibles.json')
                 key => key !== "Unnamed: 0" && key
             );
 
-            return versions.map(version => ({
+            return {
                 location: location,
-                version: version,
-                name: data[0][version],
-                text: verseEntry[version],
-            }));
-        }).flat();
+                versions: versions.map(version => ({
+                    version: version,
+                    name: data[0][version],
+                    text: verseEntry[version],
+                }))
+            };
+        });
         getRandomVerse(); // Display the first random verse
     })
     .catch(error => console.error('Error loading verses:', error));
@@ -31,8 +33,29 @@ function getRandomVerse() {
 
     const randomVerse = verses[Math.floor(Math.random() * verses.length)];
 
-    document.getElementById('versionAbbr').innerText = randomVerse.version;
-    document.getElementById('versionName').innerText = randomVerse.name;
+    // Display the location
     document.getElementById('location').innerText = randomVerse.location;
-    document.getElementById('verse').innerText = randomVerse.text;
+
+    // Prepare the HTML content for the verse display
+    let verseContent = '';
+    randomVerse.versions.forEach(verseVersion => {
+        verseContent += `
+            <div class="version-abbr">${verseVersion.version}</div>
+            <div class="version-name">${verseVersion.name}</div>
+            <div class="verse">${verseVersion.text}</div>
+        `;
+    });
+
+    // Set the inner HTML of the container to display all versions
+    document.getElementById('versionAbbr').innerHTML = verseContent;
+    document.getElementById('versionName').innerText = '';
+    document.getElementById('verse').innerText = '';
 }
+
+// Add event listener to the body to trigger getRandomVerse on background click
+document.body.addEventListener('click', (event) => {
+    // Check if the click happened outside the container
+    if (!document.getElementById('verseContainer').contains(event.target)) {
+        getRandomVerse();
+    }
+});

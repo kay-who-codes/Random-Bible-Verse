@@ -8,10 +8,12 @@ body {
     margin: 0;
     background: linear-gradient(to right, #6a11cb, #2575fc);
     color: #fff;
-    text-align: center;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure the button stays at the bottom */
     background: rgba(0, 0, 0, 0.65);
     padding: 20px 30px;
     border-radius: 10px;
@@ -20,13 +22,21 @@ body {
     max-width: 600px; /* Maximum width for larger screens */
     min-width: 300px; /* Ensures a reasonable minimum size */
     box-sizing: border-box; /* Ensures padding is included in width calculations */
+    max-height: 90vh; /* Ensures the container does not exceed the viewport height */
+    overflow-y: auto; /* Adds a scrollbar if content is too tall */
+}
+
+.location {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #caffbf;
+    text-align: center;
 }
 
 .version-abbr {
-    font-size: 1.5em;
-    font-weight: bold;
     margin-bottom: 10px;
     color: #ffea00;
+    font-weight: bold;
 }
 
 .version-name {
@@ -35,16 +45,16 @@ body {
     color: #ffe5e5;
 }
 
-.location {
-    font-size: 1.5em;
-    margin: 20px;
-    color: #caffbf;
+.verse {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
-.verse {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: auto; /* Push the button container to the bottom */
 }
 
 .button {
