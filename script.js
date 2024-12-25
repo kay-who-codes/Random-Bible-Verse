@@ -40,7 +40,6 @@ function getRandomVerse() {
     let verseContent = '';
     randomVerse.versions.forEach(verseVersion => {
         verseContent += `
-            <div class="version-abbr">${verseVersion.version}</div>
             <div class="version-name">${verseVersion.name}</div>
             <div class="verse">${verseVersion.text}</div>
         `;
