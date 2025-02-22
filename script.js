@@ -8,11 +8,12 @@ fetch('bibles.json')
         verses = data.slice(1).map(verseEntry => {
             const location = verseEntry["Unnamed: 0"];
             const versions = Object.keys(verseEntry).filter(
-                key => key !== "Unnamed: 0" && key
+                key => key !== "Unnamed: 0" && key !== "Unnamed: 4"
             );
 
             return {
                 location: location,
+                greek: verseEntry["Unnamed: 4"],
                 versions: versions.map(version => ({
                     version: version,
                     name: data[0][version],
@@ -49,6 +50,7 @@ function getRandomVerse() {
     document.getElementById('versionAbbr').innerHTML = verseContent;
     document.getElementById('versionName').innerText = '';
     document.getElementById('verse').innerText = '';
+    
 }
 
 // Add event listener to the body to trigger getRandomVerse on background click
